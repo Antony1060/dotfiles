@@ -1,0 +1,14 @@
+[user]
+	email = antoniostignjedec@gmail.com
+	name = Antony1060
+	signingkey = FC437A1812A6D8D5
+[credential]
+	helper = store
+[pull]
+	rebase = false
+[commit]
+	gpgSign = true
+[tag]
+	forceSignAnnotated = true
+[alias]
+	cm = !git add . && git commit -S -am
