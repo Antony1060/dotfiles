@@ -99,7 +99,7 @@ function starttime() {
     echo -e "\e[94m\e[1mLast startup time \e[93m⚡\e[92m\e[1m$(last_startup_time)\e[00m"
 }
 
-PS1='\e[92m$(git_branch)\e[93m\e[1m\e[03m\u\e[0m\e[1m@\e[92m\e[1mlocalhost \e[00m\e[01m\w\e[90m\e[00m \$ '
+PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
 
 export PATH="$(yarn global bin):$PATH"
 
