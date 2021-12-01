@@ -45,9 +45,13 @@ function mkcd {
 CODING_FOLDER="/home/antony/Desktop/Coding/"
 CODING_EXCLUDE_DIRS=("! -path /*.git/*" "! -path /*node_modules/*" "! -path /*python2.7/*" "! -path /*python3.6/*" "! -path /*__pycache__/*")
 function coding {
-	DIR=$(find $CODING_FOLDER -maxdepth 2 -type d ${CODING_EXCLUDE_DIRS[@]} | sed "s|$CODING_FOLDER||g" | fzf --reverse)
+	DIRS=$(find $CODING_FOLDER -maxdepth 2 -type d ${CODING_EXCLUDE_DIRS[@]} | sed "s|$CODING_FOLDER||g")
+    DIR=$(echo -e "--root-- $DIRS" | fzf --reverse)
 	if [[ ${#DIR} -ne 0 ]]; then
-		cd $CODING_FOLDER$DIR
+        if [[ "$DIR" == "--root-- " ]]; then
+            DIR="."
+        fi
+		cd "$CODING_FOLDER$DIR"
 		echo -e '\e[94m======================================\e[0m\n\n    Going to \e[36m'$DIR'\e[39m\n\n\e[94m======================================'
 	fi
 }
