@@ -8,9 +8,6 @@
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=hr_HR.UTF-8
 
-alias cat="bat"
-alias rcat="/usr/bin/cat"
-
 alias ls='ls -A --color=auto'
 alias grep='grep --color=auto'
 
