@@ -11,4 +11,5 @@
 [tag]
 	forceSignAnnotated = true
 [alias]
-	cm = !git add . && git commit -S -am
+    cm = !git add . && git commit -S -am
+    lol = log --oneline

@@ -53,6 +53,14 @@ function coding {
 	fi
 }
 
+function fzhdd {
+    DIR=$(find /hdd -maxdepth 3 -type d | fzf --reverse)
+    if [[ ${#DIR} -ne 0 ]]; then
+        cd "$DIR"
+        echo "In $DIR"
+    fi
+}
+
 alias jcode="cd /home/antony/Desktop/Coding/Java"
 alias jscode="cd /home/antony/Desktop/Coding/Js"
 
