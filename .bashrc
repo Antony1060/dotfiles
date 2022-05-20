@@ -5,10 +5,13 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
+stty -ixon
+
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=hr_HR.UTF-8
 
 alias ls='ls -A --color=auto'
+alias ll='ls -lah'
 alias grep='grep --color=auto'
 
 # Aaaaaa, don't question it please
