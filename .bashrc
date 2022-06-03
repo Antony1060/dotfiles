@@ -116,7 +116,7 @@ PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[
 export PATH="$(yarn global bin):$PATH"
 
 # ikik, shut up, please
-eval $(gnome-keyring-daemon --start)
+eval $(gnome-keyring-daemon --start 2> /dev/null)
 export SSH_AUTH_SOCK
 
 echo
