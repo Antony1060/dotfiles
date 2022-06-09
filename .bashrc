@@ -119,9 +119,11 @@ export PATH="$(yarn global bin):$PATH"
 eval $(gnome-keyring-daemon --start 2> /dev/null)
 export SSH_AUTH_SOCK
 
+source /usr/share/fzf/key-bindings.bash
+source /usr/share/nvm/init-nvm.sh
+
 echo
 echo
 neofetch
-source /usr/share/nvm/init-nvm.sh
 starttime
 . "$HOME/.cargo/env"

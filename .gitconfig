@@ -14,3 +14,5 @@
     cm = !git add . && git commit -S -am
     lol = log --oneline
     rbm = !git fetch && git rebase origin/master
+[safe]
+	directory = /var/www/ptero_mcpaste
