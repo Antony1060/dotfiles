@@ -25,6 +25,7 @@ alias codehere="code . && exit"
 
 alias k=kubectl
 alias y=yarn
+alias p=pnpm
 
 alias pcs="curl https://media.antony.red/sample.cpp > "
 alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
@@ -101,9 +102,10 @@ function git_branch() {
 }
 
 function last_startup_time() {
-	total=$(systemd-analyze | head -n 1 | cut -d '=' -f 2 | cut -d 's' -f 1)
     firmware=$(systemd-analyze | head -n 1 | cut -d ' ' -f 4 | cut -d 's' -f 1)
-    echo "$(echo "$total - $firmware" | bc)s (+${firmware}s firmware)"
+    total_seconds=$(systemd-analyze | head -n 1 | cut -d '=' -f 2 | xargs | sed -E "s/\.[0-9]+//g; s/s$/sec/; s/^/1970-01-01 00:00:00 UTC +/" | date -f- +%s)
+    after_firmware=$(echo "$(echo "($total_seconds - $firmware) / 60" | bc)min $(echo "($total_seconds - $firmware)" % 60 | bc)s" | sed -E 's/^0min //g')
+    echo -n "$after_firmware (+${firmware}s firmware)"
 }
 
 # just for fancy printing if I ever wanted to find this while using the shell normally
@@ -114,6 +116,8 @@ function starttime() {
 PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
 
 export PATH="$(yarn global bin):$PATH"
+export BUN_INSTALL="/home/antony/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # ikik, shut up, please
 eval $(gnome-keyring-daemon --start 2> /dev/null)
@@ -127,3 +131,5 @@ echo
 neofetch
 starttime
 . "$HOME/.cargo/env"
+
+[ -f ~/.config/tabtab/bash/pnpm.bash ] && . ~/.config/tabtab/bash/pnpm.bash || true
