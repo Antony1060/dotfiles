@@ -30,6 +30,8 @@ alias p=pnpm
 alias pcs="curl https://media.antony.red/sample.cpp > "
 alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
 
+alias clip="xclip -selection clip"
+
 function luytene {
     luyten
     exit
@@ -118,6 +120,8 @@ PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[
 export PATH="$(yarn global bin):$PATH"
 export BUN_INSTALL="/home/antony/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+export MAKEFLAGS="-j $(grep -c ^processor /proc/cpuinfo)"
 
 # ikik, shut up, please
 eval $(gnome-keyring-daemon --start 2> /dev/null)
