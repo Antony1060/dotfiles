@@ -10,6 +10,8 @@ stty -ixon
 export LC_ALL=en_US.UTF-8
 export LC_CTYPE=hr_HR.UTF-8
 
+alias watch='watch '
+
 alias ls='ls -A --color=auto'
 alias ll='ls -lah'
 alias grep='grep --color=auto'
@@ -137,3 +139,7 @@ starttime
 . "$HOME/.cargo/env"
 
 [ -f ~/.config/tabtab/bash/pnpm.bash ] && . ~/.config/tabtab/bash/pnpm.bash || true
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
