@@ -19,6 +19,9 @@ alias grep='grep --color=auto'
 # Aaaaaa, don't question it please
 alias luyten="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' java -jar /home/antony/Downloads/luyten-0.5.4.jar &"
 
+alias nlc="nodemon `readlink -f $(which launchc)`"
+alias nlcpp="nodemon `readlink -f $(which launchcpp)`"
+
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias codehere="code . && exit"
 
