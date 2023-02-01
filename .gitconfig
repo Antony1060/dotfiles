@@ -14,4 +14,5 @@
     cm = !git add . && git commit -S -am
     lol = log --oneline
     rbm = !git fetch && git rebase origin/master
+    rbmain = !git fetch && git rebase origin/main
     gud = !~/Desktop/Coding/Bash/git-gud/git_gud.sh
