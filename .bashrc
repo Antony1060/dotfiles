@@ -19,9 +19,6 @@ alias grep='grep --color=auto'
 # Aaaaaa, don't question it please
 alias luyten="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' java -jar /home/antony/Downloads/luyten-0.5.4.jar &"
 
-alias nlc="nodemon `readlink -f $(which launchc)`"
-alias nlcpp="nodemon `readlink -f $(which launchcpp)`"
-
 alias java8="/usr/lib/jvm/java-8-openjdk/bin/java"
 alias codehere="code . && exit"
 
@@ -107,7 +104,7 @@ function git_branch() {
 
 function last_startup_time() {
     firmware=$(systemd-analyze | head -n 1 | cut -d ' ' -f 4 | cut -d 's' -f 1)
-    total_seconds=$(systemd-analyze | head -n 1 | cut -d '=' -f 2 | xargs | sed -E "s/\.[0-9]+//g; s/s$/sec/; s/^/1970-01-01 00:00:00 UTC +/" | date -f- +%s)
+    total_seconds=$(systemd-analyze | head -n 1 | cut -d '=' -f 2 | xargs | sed -E "s/\.[0-9]+//g; s/s$/sec/; s/^/1970-01-01 00:00:00 UTC +/; s/[0-9]+msec//g" | date -f- +%s)
     after_firmware=$(echo "$(echo "($total_seconds - $firmware) / 60" | bc)min $(echo "($total_seconds - $firmware)" % 60 | bc)s" | sed -E 's/^0min //g')
     echo -n "$after_firmware (+${firmware}s firmware)"
 }

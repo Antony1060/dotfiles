@@ -8,4 +8,6 @@ fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 export GPG_TTY=$(tty)
-bash -c "~/.local/bin/firefox-sync.sh bgq2excs.default-release > /dev/null &"
+
+# uncomment if you're me on my main PC
+# bash -c "~/.local/bin/firefox-sync.sh bgq2excs.default-release > /dev/null &"
