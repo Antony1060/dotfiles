@@ -31,6 +31,8 @@ alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
 
 alias clip="xclip -selection clip"
 
+alias laptop-perf="sudo bash -c 'echo performance > /sys/firmware/acpi/platform_profile'"
+
 function luytene {
     luyten
     exit
@@ -139,3 +141,5 @@ starttime
 export PNPM_HOME="/home/antony/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 # pnpm end
+
+export PATH="$PATH:/home/antony/.foundry/bin"
