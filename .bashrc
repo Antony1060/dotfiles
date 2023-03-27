@@ -137,6 +137,8 @@ neofetch
 starttime
 . "$HOME/.cargo/env"
 
+export EDITOR=vim
+
 # pnpm
 export PNPM_HOME="/home/antony/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
