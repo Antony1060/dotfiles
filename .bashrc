@@ -145,3 +145,8 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 export PATH="$PATH:/home/antony/.foundry/bin"
+export PATH="$PATH:/home/antony/.local/bin"
+
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
