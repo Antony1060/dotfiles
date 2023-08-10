@@ -25,11 +25,16 @@ alias codehere="code . && exit"
 alias k=kubectl
 alias y=yarn
 alias p=pnpm
+alias doc=docker-compose
 
 alias pcs="curl https://media.antony.red/sample.cpp > "
 alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
 
 alias clip="xclip -selection clip"
+
+function dolph {
+    bash -c "dolphin $1 &"
+}
 
 alias laptop-perf="sudo bash -c 'echo performance > /sys/firmware/acpi/platform_profile'"
 
@@ -116,7 +121,7 @@ function starttime() {
     echo -e "\e[94m\e[1mLast startup time \e[93m⚡\e[92m\e[1m$(last_startup_time)\e[00m"
 }
 
-PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
+PS1='\[\e[94m\]($(k config current-context))\[\e[93m\] \[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
 
 export PATH="$(yarn global bin):$PATH"
 export BUN_INSTALL="/home/antony/.bun"
