@@ -1,9 +1,9 @@
 [user]
 	email = antoniostignjedec@gmail.com
-	name = Antony1060
+	name = Antonio F. Trstenjak
 	signingkey = FC437A1812A6D8D5
 [credential]
-	helper = store
+	helper = /usr/lib/git-core/git-credential-libsecret
 [pull]
 	rebase = true
 [commit]
@@ -18,3 +18,5 @@
     gud = !~/Desktop/Coding/Bash/git-gud/git_gud.sh
 [init]
 	defaultBranch = master
+[core]
+	excludesfile = /home/antony/.config/git/ignore

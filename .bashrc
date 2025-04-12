@@ -15,6 +15,7 @@ alias watch='watch '
 alias ls='ls -A --color=auto'
 alias ll='ls -lah'
 alias grep='grep --color=auto'
+alias diff='diff --color=auto'
 
 # Aaaaaa, don't question it please
 alias luyten="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' java -jar /home/antony/Downloads/luyten-0.5.4.jar &"
@@ -25,12 +26,17 @@ alias codehere="code . && exit"
 alias k=kubectl
 alias y=yarn
 alias p=pnpm
+alias b=bun
 alias doc=docker-compose
 
 alias pcs="curl https://media.antony.red/sample.cpp > "
 alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
 
 alias clip="xclip -selection clip"
+
+alias virsh="virsh --connect qemu:///system"
+
+export MANPAGER="sh -c 'sed -u -e \"s/\\x1B\[[0-9;]*m//g; s/.\\x08//g\" | bat -p -lman'"
 
 function dolph {
     bash -c "dolphin $1 &"
@@ -122,8 +128,8 @@ function starttime() {
 }
 
 PS1='\[\e[94m\]($(k config current-context))\[\e[93m\] \[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
+# PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
 
-export PATH="$(yarn global bin):$PATH"
 export BUN_INSTALL="/home/antony/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
@@ -135,11 +141,9 @@ export SSH_AUTH_SOCK
 
 source /usr/share/fzf/key-bindings.bash
 source /usr/share/nvm/init-nvm.sh
+source <(kubectl completion bash)
 
-echo
-echo
-neofetch
-starttime
+export RUSTC_WRAPPER=/usr/bin/sccache
 . "$HOME/.cargo/env"
 
 export EDITOR=vim
@@ -152,6 +156,28 @@ export PATH="$PNPM_HOME:$PATH"
 export PATH="$PATH:/home/antony/.foundry/bin"
 export PATH="$PATH:/home/antony/.local/bin"
 
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # tabtab source for packages
 # uninstall by removing these lines
 [ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
+
+# krew path
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+
+export MPJ_HOME=/home/antony/Downloads/mpj-v0_44
+export PATH="$MPJ_HOME/bin:$PATH"
+
+echo
+fastfetch
+starttime
+
+[ -f "/home/antony/.ghcup/env" ] && . "/home/antony/.ghcup/env" # ghcup-env
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/path.bash.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
