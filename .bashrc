@@ -16,6 +16,7 @@ alias ls='ls -A --color=auto'
 alias ll='ls -lah'
 alias grep='grep --color=auto'
 alias diff='diff --color=auto'
+alias gcd='cd $(git rev-parse --show-toplevel)'
 
 # Aaaaaa, don't question it please
 alias luyten="_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' java -jar /home/antony/Downloads/luyten-0.5.4.jar &"
@@ -28,6 +29,7 @@ alias y=yarn
 alias p=pnpm
 alias b=bun
 alias doc=docker-compose
+alias minecraft="rm -r ~/.minecraft/webcache2 && minecraft-launcher &"
 
 alias pcs="curl https://media.antony.red/sample.cpp > "
 alias pcms="curl https://media.antony.red/sampleMulti.cpp > "
@@ -127,9 +129,6 @@ function starttime() {
     echo -e "\e[94m\e[1mLast startup time \e[93m⚡\e[92m\e[1m$(last_startup_time)\e[00m"
 }
 
-PS1='\[\e[94m\]($(k config current-context))\[\e[93m\] \[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
-# PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
-
 export BUN_INSTALL="/home/antony/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
@@ -140,7 +139,10 @@ eval $(gnome-keyring-daemon --start 2> /dev/null)
 export SSH_AUTH_SOCK
 
 source /usr/share/fzf/key-bindings.bash
-source /usr/share/nvm/init-nvm.sh
+
+function snvm {
+    source /usr/share/nvm/init-nvm.sh
+}
 source <(kubectl completion bash)
 
 export RUSTC_WRAPPER=/usr/bin/sccache
@@ -181,3 +183,9 @@ if [ -f '/opt/google-cloud-sdk/path.bash.inc' ]; then . '/opt/google-cloud-sdk/p
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/opt/google-cloud-sdk/completion.bash.inc' ]; then . '/opt/google-cloud-sdk/completion.bash.inc'; fi
+
+export PATH="$PATH:$HOME/.dotnet/tools"
+export PATH="$PATH:$HOME/.local/share/JetBrains/Toolbox/scripts"
+
+PS1='\[\e[94m\]($(k config current-context))\[\e[93m\] \[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
+# PS1='\[\e[92m\]$(git_branch)\[\e[93m\]\[\e[1m\]\[\e[03m\]\u\[\e[0m\]\[\e[1m\]@\[\e[92m\]\[\e[1m\]localhost \[\e[00m\]\[\e[01m\]\w\[\e[90m\]\[\e[00m\] \$ '
